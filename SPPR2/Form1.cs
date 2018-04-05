@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SPPR2.Action;
+using SPPR2.Entity;
 
 namespace SPPR2
 {
     public partial class Form1 : Form
     {
+        PoolOfActions actions = new PoolOfActions();
         CriterionSolver cSolver = new CriterionSolver();
         Boolean _isProfit = false;
+        private HelpForm _helpForm;
+        private DataGridViewRow _withChangeStyle;
 
         public Form1()
         {
@@ -31,7 +36,7 @@ namespace SPPR2
             DataGridView2.Rows.Add("Лапласа", "");
             DataGridView2.AllowUserToAddRows = false;
             DataGridView2.AllowUserToDeleteRows = false;
-            for (int i = 0; i < this.DataGridView1.Rows.Count; i++)
+            for (int i = 0; i < DataGridView1.Rows.Count; i++)
             {
                 DataGridView1.Rows[i].Resizable = DataGridViewTriState.True;
             }
@@ -74,7 +79,6 @@ namespace SPPR2
 
         private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void buttonGo_Click(object sender, EventArgs e)
@@ -91,9 +95,6 @@ namespace SPPR2
 
             var data = cSolver.solveTask(DataGridView1, _isProfit, Double.Parse(textBox1.Text));
             insertResultsIntoTable(data);
-
-
-
         }
 
         private void DataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -117,16 +118,43 @@ namespace SPPR2
             }
         }
 
-        private void insertResultsIntoTable(Dictionary<string, string> data)
+        private void insertResultsIntoTable(Dictionary<string, MethodInfo> data)
         {
             foreach (DataGridViewRow row in DataGridView2.Rows)
             {
-                if (row.Index == DataGridView2.Rows.Count - 1) continue;
-                if (row.Cells[0].Value.ToString() == "Максимакса") row.Cells[1].Value = data["Максимакса"];
-                if (row.Cells[0].Value.ToString() == "Вальда") row.Cells[1].Value = data["Вальда"];
-                if (row.Cells[0].Value.ToString() == "Минимального риска Сэвиджа") row.Cells[1].Value = data["Максимакса"];
-                if (row.Cells[0].Value.ToString() == "Пессемизма-оптимизма Гурвица") row.Cells[1].Value = data["Гурвица"];
-                if (row.Cells[0].Value.ToString() == "Лапласа") row.Cells[1].Value = data["Лапласа"];
+                switch (row.Cells[0].Value.ToString())
+                {
+                    case "Максимакса":
+                    {
+                        row.Cells[1].Value = data["Максимакса"].Option;
+                        row.Cells[2].Value = data["Максимакса"].Value;
+                            break;
+                    }
+                    case "Вальда":
+                    {
+                        row.Cells[1].Value = data["Вальда"].Option;
+                        row.Cells[2].Value = data["Вальда"].Value;
+                            break;
+                    }
+                    case "Минимального риска Сэвиджа":
+                    {
+                        row.Cells[1].Value = data["Сэвиджа"].Option;
+                        row.Cells[2].Value = data["Сэвиджа"].Value;
+                            break;
+                    }
+                    case "Пессемизма-оптимизма Гурвица":
+                    {
+                        row.Cells[1].Value = data["Гурвица"].Option;
+                        row.Cells[2].Value = data["Гурвица"].Value;
+                            break;
+                    }
+                    case "Лапласа":
+                    {
+                        row.Cells[1].Value = data["Лапласа"].Option;
+                        row.Cells[2].Value = data["Лапласа"].Value;
+                            break;
+                    }
+                }
             }
         }
 
@@ -156,24 +184,12 @@ namespace SPPR2
             }
         }
 
-        private void Drawing()
-        {
-            for (var i = 0; i < DataGridView1.Rows.Count; i++)
-            {
-                DataGridView1.Rows[i].HeaderCell.Value = "Вариант " + (i + 1);
-            }
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow
-                row in DataGridView1.Rows)
+            actions.Add(new Clear(), DataGridView1, null);
+            if (_withChangeStyle != null)
             {
-                foreach (DataGridViewCell rowCell in row.Cells)
-                {
-                    rowCell.Value = "";
-                }
+                _withChangeStyle.DefaultCellStyle.BackColor = Color.White;
             }
         }
 
@@ -218,6 +234,58 @@ namespace SPPR2
 
         private void CreateMatrix_Click(object sender, EventArgs e)
         {
+            actions.Add(new CreateMatrix(), DataGridView1,new object[]{RowCounter.Text,CellCounter.Text});
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                actions.Backing();
+            }
+        }
+
+        private void DataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.N)
+            {
+                actions.Backing();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void отменитьToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            actions.Backing();
+        }
+
+        private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_helpForm == null || _helpForm.IsDisposed)
+            {
+                _helpForm=new  HelpForm();
+            }
+
+            _helpForm.Visible = true;
+        }
+
+        private void DataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (_withChangeStyle != null)
+            {
+                _withChangeStyle.DefaultCellStyle.BackColor = Color.White;
+            }
+
+            var resultData = DataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString().Replace("Вариант ", "");
+            if (resultData != "")
+            {
+                _withChangeStyle = DataGridView1.Rows[int.Parse(resultData) - 1];
+                _withChangeStyle.DefaultCellStyle.BackColor = Color.PowderBlue;              
+            }
         }
     }
 }

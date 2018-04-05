@@ -40,24 +40,30 @@
             this.button3 = new System.Windows.Forms.Button();
             this.ButtonDeleteRow = new System.Windows.Forms.Button();
             this.ButtonDeleteColumn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.DataGridView2 = new System.Windows.Forms.DataGridView();
-            this.NameofCritery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BestVariant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonGo = new System.Windows.Forms.Button();
+            this.DataGridView2 = new System.Windows.Forms.DataGridView();
             this.DataGridView1 = new System.Windows.Forms.DataGridView();
             this.Course = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ButtonAddColumn = new System.Windows.Forms.Button();
             this.ButtonAddRow = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NameofCritery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BestVariant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -76,10 +82,10 @@
             this.panel1.Controls.Add(this.DataGridView1);
             this.panel1.Controls.Add(this.ButtonAddColumn);
             this.panel1.Controls.Add(this.ButtonAddRow);
-            this.panel1.Location = new System.Drawing.Point(17, 16);
+            this.panel1.Location = new System.Drawing.Point(13, 28);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1190, 780);
+            this.panel1.Size = new System.Drawing.Size(1194, 768);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -92,7 +98,7 @@
             this.panel2.Controls.Add(this.LabelRow);
             this.panel2.Controls.Add(this.RowCounter);
             this.panel2.Controls.Add(this.CellCounter);
-            this.panel2.Location = new System.Drawing.Point(415, 544);
+            this.panel2.Location = new System.Drawing.Point(419, 532);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(258, 210);
             this.panel2.TabIndex = 23;
@@ -171,7 +177,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(1056, 19);
+            this.button3.Location = new System.Drawing.Point(1041, 18);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(110, 28);
@@ -183,10 +189,10 @@
             // ButtonDeleteRow
             // 
             this.ButtonDeleteRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonDeleteRow.Location = new System.Drawing.Point(738, 19);
+            this.ButtonDeleteRow.Location = new System.Drawing.Point(685, 18);
             this.ButtonDeleteRow.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonDeleteRow.Name = "ButtonDeleteRow";
-            this.ButtonDeleteRow.Size = new System.Drawing.Size(144, 28);
+            this.ButtonDeleteRow.Size = new System.Drawing.Size(145, 28);
             this.ButtonDeleteRow.TabIndex = 15;
             this.ButtonDeleteRow.Text = "Убрать строку";
             this.ButtonDeleteRow.UseVisualStyleBackColor = true;
@@ -195,33 +201,22 @@
             // ButtonDeleteColumn
             // 
             this.ButtonDeleteColumn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonDeleteColumn.Location = new System.Drawing.Point(420, 19);
+            this.ButtonDeleteColumn.Location = new System.Drawing.Point(336, 18);
             this.ButtonDeleteColumn.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonDeleteColumn.Name = "ButtonDeleteColumn";
-            this.ButtonDeleteColumn.Size = new System.Drawing.Size(154, 28);
+            this.ButtonDeleteColumn.Size = new System.Drawing.Size(155, 28);
             this.ButtonDeleteColumn.TabIndex = 14;
             this.ButtonDeleteColumn.Text = "Убрать столбец";
             this.ButtonDeleteColumn.UseVisualStyleBackColor = true;
             this.ButtonDeleteColumn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 114);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 34);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Коэффициент оптимизма\r\nдля критерия Гурвица";
-            // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(226, 664);
+            this.textBox1.Location = new System.Drawing.Point(226, 652);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 22);
+            this.textBox1.Size = new System.Drawing.Size(124, 22);
             this.textBox1.TabIndex = 12;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -232,7 +227,7 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.buttonGo);
-            this.groupBox1.Location = new System.Drawing.Point(30, 544);
+            this.groupBox1.Location = new System.Drawing.Point(30, 532);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -266,33 +261,16 @@
             this.radioButton1.Text = "Матрица прибыли";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // DataGridView2
+            // label1
             // 
-            this.DataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NameofCritery,
-            this.BestVariant});
-            this.DataGridView2.Location = new System.Drawing.Point(680, 544);
-            this.DataGridView2.Margin = new System.Windows.Forms.Padding(4);
-            this.DataGridView2.Name = "DataGridView2";
-            this.DataGridView2.Size = new System.Drawing.Size(487, 210);
-            this.DataGridView2.TabIndex = 10;
-            this.DataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
-            // 
-            // NameofCritery
-            // 
-            this.NameofCritery.HeaderText = "Критерий";
-            this.NameofCritery.Name = "NameofCritery";
-            this.NameofCritery.ReadOnly = true;
-            this.NameofCritery.Width = 190;
-            // 
-            // BestVariant
-            // 
-            this.BestVariant.HeaderText = "Лучший вариант";
-            this.BestVariant.Name = "BestVariant";
-            this.BestVariant.ReadOnly = true;
-            this.BestVariant.Width = 130;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 114);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(177, 34);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Коэффициент оптимизма\r\nдля критерия Гурвица";
             // 
             // buttonGo
             // 
@@ -307,6 +285,22 @@
             this.buttonGo.UseVisualStyleBackColor = true;
             this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
             // 
+            // DataGridView2
+            // 
+            this.DataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameofCritery,
+            this.BestVariant,
+            this.Value});
+            this.DataGridView2.Location = new System.Drawing.Point(684, 532);
+            this.DataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.DataGridView2.Name = "DataGridView2";
+            this.DataGridView2.Size = new System.Drawing.Size(487, 210);
+            this.DataGridView2.TabIndex = 10;
+            this.DataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellClick);
+            this.DataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView2_CellContentClick);
+            // 
             // DataGridView1
             // 
             this.DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -317,14 +311,15 @@
             this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Course});
-            this.DataGridView1.Location = new System.Drawing.Point(20, 53);
+            this.DataGridView1.Location = new System.Drawing.Point(20, 52);
             this.DataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DataGridView1.Name = "DataGridView1";
             this.DataGridView1.RowTemplate.Height = 24;
-            this.DataGridView1.Size = new System.Drawing.Size(1147, 486);
+            this.DataGridView1.Size = new System.Drawing.Size(1151, 475);
             this.DataGridView1.TabIndex = 3;
             this.DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             this.DataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DataGridView1_RowsAdded);
+            this.DataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridView1_KeyDown);
             // 
             // Course
             // 
@@ -337,10 +332,10 @@
             // ButtonAddColumn
             // 
             this.ButtonAddColumn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonAddColumn.Location = new System.Drawing.Point(262, 19);
+            this.ButtonAddColumn.Location = new System.Drawing.Point(162, 18);
             this.ButtonAddColumn.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonAddColumn.Name = "ButtonAddColumn";
-            this.ButtonAddColumn.Size = new System.Drawing.Size(150, 28);
+            this.ButtonAddColumn.Size = new System.Drawing.Size(151, 28);
             this.ButtonAddColumn.TabIndex = 1;
             this.ButtonAddColumn.Text = "Добавить столбец";
             this.ButtonAddColumn.UseVisualStyleBackColor = true;
@@ -349,14 +344,70 @@
             // ButtonAddRow
             // 
             this.ButtonAddRow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonAddRow.Location = new System.Drawing.Point(582, 19);
+            this.ButtonAddRow.Location = new System.Drawing.Point(511, 18);
             this.ButtonAddRow.Margin = new System.Windows.Forms.Padding(4);
             this.ButtonAddRow.Name = "ButtonAddRow";
-            this.ButtonAddRow.Size = new System.Drawing.Size(148, 28);
+            this.ButtonAddRow.Size = new System.Drawing.Size(149, 28);
             this.ButtonAddRow.TabIndex = 0;
             this.ButtonAddRow.Text = "Добавить строку";
             this.ButtonAddRow.UseVisualStyleBackColor = true;
             this.ButtonAddRow.Click += new System.EventHandler(this.buttonAddRow_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.правкаToolStripMenuItem,
+            this.помощьToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1224, 28);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // правкаToolStripMenuItem
+            // 
+            this.правкаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.отменитьToolStripMenuItem});
+            this.правкаToolStripMenuItem.Name = "правкаToolStripMenuItem";
+            this.правкаToolStripMenuItem.Size = new System.Drawing.Size(72, 24);
+            this.правкаToolStripMenuItem.Text = "Правка";
+            // 
+            // отменитьToolStripMenuItem
+            // 
+            this.отменитьToolStripMenuItem.Name = "отменитьToolStripMenuItem";
+            this.отменитьToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.отменитьToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.отменитьToolStripMenuItem.Text = "Отменить";
+            this.отменитьToolStripMenuItem.Click += new System.EventHandler(this.отменитьToolStripMenuItem_Click_1);
+            // 
+            // помощьToolStripMenuItem
+            // 
+            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.помощьToolStripMenuItem.Text = "Помощь";
+            this.помощьToolStripMenuItem.Click += new System.EventHandler(this.помощьToolStripMenuItem_Click);
+            // 
+            // NameofCritery
+            // 
+            this.NameofCritery.HeaderText = "Критерий";
+            this.NameofCritery.Name = "NameofCritery";
+            this.NameofCritery.ReadOnly = true;
+            this.NameofCritery.Width = 180;
+            // 
+            // BestVariant
+            // 
+            this.BestVariant.HeaderText = "Лучший вариант";
+            this.BestVariant.Name = "BestVariant";
+            this.BestVariant.ReadOnly = true;
+            this.BestVariant.Width = 70;
+            // 
+            // Value
+            // 
+            this.Value.HeaderText = "Значение критерия";
+            this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
+            this.Value.Width = 70;
             // 
             // Form1
             // 
@@ -364,9 +415,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1224, 810);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -375,7 +429,10 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -404,8 +461,13 @@
         private System.Windows.Forms.Label Size;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button CreateMatrix;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отменитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameofCritery;
         private System.Windows.Forms.DataGridViewTextBoxColumn BestVariant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Value;
     }
 }
 

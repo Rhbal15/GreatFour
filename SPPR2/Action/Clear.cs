@@ -7,17 +7,14 @@ using System.Windows.Forms;
 
 namespace SPPR2.Action
 {
-    class CreateMatrix : Action
+    class Clear : Action
     {
         private int?[][] _history;
         private DataGridView _data;
-        public void Working(DataGridView data,object[] parameters)
+        public void Working(DataGridView data, object[] parameters)
         {
-            _data = data;
-            if (!Int32.TryParse(((string)parameters[0]), out var rowCounter)) return;
-            if (!Int32.TryParse(((string)parameters[1]), out var cellCounter)) return;
-
-            _history=new int?[data.RowCount][];
+            _data=data;
+            _history = new int?[data.RowCount][];
 
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -31,25 +28,15 @@ namespace SPPR2.Action
                 }
             }
 
-            data.Columns.Clear();
-            data.Rows.Clear();
-            for (int i = 0; i < cellCounter; i++)
+            foreach (DataGridViewRow
+                row in data.Rows)
             {
-                DataGridViewTextBoxColumn col =
-                    new DataGridViewTextBoxColumn
-                    {
-                        HeaderText = "Среда №" + (data.Columns.Count + 1),
-                        Resizable = DataGridViewTriState.True,
-                        AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-                    };
-                data.Columns.Add(col);
-            }
-            for (int j = 0; j < rowCounter; j++)
-            {
-                data.Rows.Add();
+                foreach (DataGridViewCell rowCell in row.Cells)
+                {
+                    rowCell.Value = "";
+                }
             }
         }
-
 
         public void Canceling()
         {
@@ -76,13 +63,13 @@ namespace SPPR2.Action
             for (int j = 0; j < _history.Length; j++)
             {
                 _data.Rows.Add();
-                }
+            }
 
             for (int i = 0; i < _history.Length; i++)
             {
                 for (int j = 0; j < _history[i].Length; j++)
                 {
-                    _data.Rows[i].Cells[j].Value=_history[i][j];
+                    _data.Rows[i].Cells[j].Value = _history[i][j];
                 }
             }
         }

@@ -11,6 +11,5 @@ namespace SPPR2.Action
     {
         void Working(DataGridView data,object[] parameters);
         void Canceling();
-        void SaveHistory(DataGridView data);
     }
 }

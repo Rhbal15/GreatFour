@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SPPR2.Entity;
 
 namespace SPPR2
 {
     class CriterionSolver
     {
-        Dictionary<string, string> _results = new Dictionary<string, string> { };
+        Dictionary<string, MethodInfo> _results = new Dictionary<string, MethodInfo>();
         Boolean _isProfit = false;
         Double _optimisticKoef;
 
-        public Dictionary<string, string> solveTask(DataGridView data, Boolean isProfit, double optimisticKoef)
+        public Dictionary<string, MethodInfo> solveTask(DataGridView data, Boolean isProfit, double optimisticKoef)
         {
             _isProfit = isProfit;
             _optimisticKoef = optimisticKoef;
@@ -55,16 +56,13 @@ namespace SPPR2
 
             if (_results.ContainsKey("Максимакса"))
             {
-                _results["Максимакса"] = rowName;
+                _results["Максимакса"].Option = rowName;
+                _results["Максимакса"].Value = temp;
             }
             else
             {
-                _results.Add("Максимакса", rowName);
-            }
-            
-
-
-
+                _results.Add("Максимакса", new MethodInfo {Option = rowName, Value = temp});
+            }      
         }
 
         public void solveValda(DataGridView data)
@@ -133,11 +131,12 @@ namespace SPPR2
 
             if (_results.ContainsKey("Вальда"))
             {
-                _results["Вальда"] = rowName;
+                _results["Вальда"].Option = rowName;
+                _results["Вальда"].Value = perem;
             }
             else
             {
-                _results.Add("Вальда", rowName);
+                _results.Add("Вальда", new MethodInfo{Option = rowName,Value = perem});
             }
         }
 
@@ -200,11 +199,12 @@ namespace SPPR2
 
             if (_results.ContainsKey("Лапласа"))
             {
-                _results["Лапласа"] = rowName;
+                _results["Лапласа"].Option = rowName;
+                _results["Лапласа"].Value = perem;
             }
             else
             {
-                _results.Add("Лапласа", rowName);
+                _results.Add("Лапласа", new MethodInfo { Option = rowName, Value = perem });
             }
 
         }
@@ -276,11 +276,11 @@ namespace SPPR2
 
             if (_results.ContainsKey("Гурвица"))
             {
-                _results["Гурвица"] = headerRow;
+                _results["Гурвица"].Option = headerRow;
             }
             else
             {
-                _results.Add("Гурвица", headerRow);
+                _results.Add("Гурвица", new MethodInfo { Option = headerRow, Value = tempMinValue });
             }
 
         }
@@ -308,7 +308,7 @@ namespace SPPR2
 
                 for (int i = 0; i < tempTable.Rows.Count; i++)
                 {
-                    tempTable.Rows[i].HeaderCell.Value = "Вариант " + (i + 1);
+                    tempTable.Rows[i].HeaderCell.Value = "Вариант " + (i);
                 }
             }
 
@@ -420,11 +420,11 @@ namespace SPPR2
 
             if (_results.ContainsKey("Сэвиджа"))
             {
-                _results["Сэвиджа"] = headerRow;
+                _results["Сэвиджа"].Option = headerRow;
             }
             else
             {
-                _results.Add("Сэвиджа", headerRow);
+                _results.Add("Сэвиджа", new MethodInfo { Option = headerRow, Value = tempMax });
             }
 
 
