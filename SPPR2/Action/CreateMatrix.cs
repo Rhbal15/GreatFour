@@ -14,8 +14,10 @@ namespace SPPR2.Action
         public void Working(DataGridView data,object[] parameters)
         {
             _data = data;
-            if (!Int32.TryParse(((string)parameters[0]), out var rowCounter)) return;
-            if (!Int32.TryParse(((string)parameters[1]), out var cellCounter)) return;
+            var rowCounter = 0;
+            var cellCounter = 0;
+            if (!Int32.TryParse(((string)parameters[0]), out rowCounter)) return;
+            if (!Int32.TryParse(((string)parameters[1]), out cellCounter)) return;
 
             _history=new int?[data.RowCount][];
 

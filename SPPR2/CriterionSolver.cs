@@ -274,13 +274,18 @@ namespace SPPR2
                 }
             }
 
+            Double resultValue = 0;
+            if (!_isProfit) resultValue = tempMinValue;
+            if (_isProfit) resultValue = tempMaxValue;
+
             if (_results.ContainsKey("Гурвица"))
             {
                 _results["Гурвица"].Option = headerRow;
+                _results["Гурвица"].Value = resultValue;
             }
             else
             {
-                _results.Add("Гурвица", new MethodInfo { Option = headerRow, Value = tempMinValue });
+                _results.Add("Гурвица", new MethodInfo { Option = headerRow, Value = resultValue });
             }
 
         }
@@ -308,7 +313,7 @@ namespace SPPR2
 
                 for (int i = 0; i < tempTable.Rows.Count; i++)
                 {
-                    tempTable.Rows[i].HeaderCell.Value = "Вариант " + (i);
+                    tempTable.Rows[i].HeaderCell.Value = "Вариант " + (i+1);
                 }
             }
 
@@ -337,7 +342,7 @@ namespace SPPR2
 
                     if (_isProfit)
                     {
-                        tempTable[i, j].Value = Double.Parse(data[i, j].Value.ToString()) - maxInCol;
+                        tempTable[i, j].Value = maxInCol - Double.Parse(data[i, j].Value.ToString());
                     }
                     else
                     {
@@ -351,7 +356,7 @@ namespace SPPR2
 
             foreach (DataGridViewRow row in tempTable.Rows)
             {
-                if (row.Index == data.Rows.Count - 1) continue;
+                if (row.Index == data.Rows.Count) continue;
                 Double minInRow = Double.MaxValue;
                 Double maxInRow = Double.MinValue;
                 foreach (DataGridViewCell cell in row.Cells)
@@ -417,14 +422,18 @@ namespace SPPR2
                 }
             }
 
+            Double resultValue = 0;
+            if (_isProfit) resultValue = tempMin;
+            if (!_isProfit) resultValue = tempMax;
 
             if (_results.ContainsKey("Сэвиджа"))
             {
                 _results["Сэвиджа"].Option = headerRow;
+                _results["Сэвиджа"].Value = resultValue;
             }
             else
             {
-                _results.Add("Сэвиджа", new MethodInfo { Option = headerRow, Value = tempMax });
+                _results.Add("Сэвиджа", new MethodInfo { Option = headerRow, Value = resultValue });
             }
 
 

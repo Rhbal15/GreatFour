@@ -287,5 +287,27 @@ namespace SPPR2
                 _withChangeStyle.DefaultCellStyle.BackColor = Color.PowderBlue;              
             }
         }
+
+        private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            printDocument2.Print();
+            printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bmp = new Bitmap(DataGridView1.Size.Width + 10, DataGridView1.Size.Height + 10);
+            DataGridView1.DrawToBitmap(bmp, DataGridView1.Bounds);
+            e.Graphics.DrawImage(bmp, 0, 0);
+
+            
+        }
+
+        private void printDocument2_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs v)
+        {
+            Bitmap bmp2 = new Bitmap(DataGridView2.Size.Width + 10, DataGridView2.Size.Height + 10);
+            DataGridView2.DrawToBitmap(bmp2, DataGridView2.Bounds);
+            v.Graphics.DrawImage(bmp2, 0, 0);
+        }
     }
 }
