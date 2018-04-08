@@ -23,7 +23,15 @@ namespace SPPR2.Action
                 {
                     if (data.Rows[i].Cells[j].Value != null)
                     {
-                        _history[i][j] = int.Parse(data.Rows[i].Cells[j].Value.ToString());
+                        var value = data.Rows[i]?.Cells[j]?.Value?.ToString();
+                        try
+                        {
+                            _history[i][j] = int.Parse(value);
+                        }
+                        catch (FormatException)
+                        {
+                            _history[i][j] = null;
+                        }
                     }
                 }
             }
